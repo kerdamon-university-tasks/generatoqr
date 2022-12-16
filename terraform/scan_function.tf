@@ -1,6 +1,6 @@
 data "archive_file" "scan_source" {
     type        = "zip"
-    source_dir  = "../src"
+    source_dir  = "../src/scan"
     output_path = "/tmp/function.zip"
 }
 

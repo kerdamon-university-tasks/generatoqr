@@ -1,6 +1,6 @@
 data "archive_file" "crud_source" {
     type        = "zip"
-    source_dir  = "../src"
+    source_dir  = "../src/crud"
     output_path = "/tmp/function.zip"
 }
 
