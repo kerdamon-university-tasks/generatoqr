@@ -13,7 +13,7 @@ resource "google_storage_bucket_object" "scan_function_src" {
 resource "google_cloudfunctions_function" "scan_function" {
   name        = "scan-function"
   runtime     = "nodejs16"
-  entry_point = "helloHttp"
+  entry_point = "qrcode"
   source_archive_bucket = google_storage_bucket.function_bucket.name
   source_archive_object = google_storage_bucket_object.scan_function_src.name
   trigger_http = true
