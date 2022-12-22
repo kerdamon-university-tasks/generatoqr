@@ -6,7 +6,7 @@ initializeApp();
 const db = getFirestore();
 
 const app = express();
-app.use('/:id', async (req, res) => {
+app.get('/:id', async (req, res) => {
     const id = req.params.id;
     const doc = await db.collection('destination_adresses').doc(id).get();
     if (typeof doc.data() === 'undefined'){

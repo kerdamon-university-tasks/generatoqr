@@ -6,12 +6,13 @@ initializeApp();
 const db = getFirestore();
 
 const app = express();
-app.use('/:id', async (req, res) => {
-    const id = req.params.id;
-    const destination_adress = db.collection('destination_adresses').doc(id);
-    const doc = await document.get();
-    res.send(doc)
-    // res.redirect(destination_adress.data());
+app.post('/', async (req, res) => {
+    const id = req.body.id;
+    console.log(req.body);
+    const destination_address = req.body.destination_address;
+    const data = {destination: destination_address};
+    const response = await db.collection('destination_adresses').doc(id).set(data);
+    res.send("Created");
 });
 
 exports.qrcode = app;
