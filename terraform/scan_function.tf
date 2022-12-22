@@ -1,7 +1,7 @@
 data "archive_file" "scan_source" {
     type        = "zip"
     source_dir  = "../src/scan"
-    output_path = "/tmp/function.zip"
+    output_path = "/tmp/scan_function.zip"
 }
 
 resource "google_storage_bucket_object" "scan_function_src" {

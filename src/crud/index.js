@@ -2,6 +2,8 @@ const express = require('express');
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 
+const baseUrl = 'https://europe-central2-generatoqr.cloudfunctions.net/scan-function';
+
 initializeApp();
 const db = getFirestore();
 
@@ -15,4 +17,12 @@ app.post('/', async (req, res) => {
     res.send("Created");
 });
 
-exports.qrcode = app;
+app.get('*', async (req, res) => {
+    res.send(`<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <div id="qrcode"></div>
+    <script type="text/javascript">
+    new QRCode(document.getElementById("qrcode"), "${baseUrl + req.path}");
+    </script>`);
+});
+
+exports.crud_qrcode = app;
