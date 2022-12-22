@@ -11,3 +11,5 @@ resource "google_storage_bucket" "crud_frontend" {
       not_found_page   = "index.html"
   }
 }
+
+

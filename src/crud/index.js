@@ -14,10 +14,14 @@ app.post('/', async (req, res) => {
     const destination_address = req.body.destination_address;
     const data = {destination: destination_address};
     const response = await db.collection('destination_adresses').doc(id).set(data);
-    res.send("Created");
+    res.redirect(`/crud-function/${id}`);
 });
 
-app.get('*', async (req, res) => {
+app.get('/', (req, res) => {
+    res.redirect('https://storage.googleapis.com/generatoqr-crud-frontend/index.html');
+})
+
+app.get('/*', async (req, res) => {
     res.send(`<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <div id="qrcode"></div>
     <script type="text/javascript">
